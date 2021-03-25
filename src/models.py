@@ -44,11 +44,12 @@ class Planetas(Base):
 class Favoritos(Base):
     __tablename__ = 'favoritos'
     favorite_id = Column(Integer, primary_key=True)
-    user_Name = Column(String(250))
-    name_person = Column(String(250))
-    name_planet = Column(String(250))
-    person_id = Column(Integer, ForeignKey('person.id_person'))
-    person = relationship(Personajes)
+    id_user = Column(Integer, ForeignKey('userIds.id_user'))
+    usuario = relationship(Usuarios)
+    id_personaje = Column(Integer, ForeignKey('personajes.id_person'))
+    personaje = relationship(Personajes)
+    id_planeta = Column(Integer, ForeignKey('planetas.id_planet'))
+    planeta = relationship(Planetas)
 
 
     def to_dict(self):
